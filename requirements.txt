@@ -6,3 +6,4 @@ langchain-community
 python-dotenv
 requests
 pypdf
+langchain-google-genai
