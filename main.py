@@ -7,6 +7,7 @@ from langchain.chat_models import init_chat_model
 from dotenv import load_dotenv
 import requests
 import tempfile
+from fastapi.middleware.cors import CORSMiddleware
 
 # Load API keys from .env
 load_dotenv()
@@ -25,6 +26,20 @@ with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp_file:
 
 # Initialize FastAPI
 app = FastAPI()
+
+origins = [
+    "http://127.0.0.1:5500",  
+    "http://localhost:5500",
+    "https://ketanhegde.github.io/" 
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,         
+    allow_credentials=True,
+    allow_methods=["*"],           
+    allow_headers=["*"],           
+)
 
 # Define request schema
 class ChatRequest(BaseModel):
