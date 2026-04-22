@@ -2,6 +2,7 @@ fastapi
 uvicorn
 pydantic
 langchain
+langchain_core
 langchain-community
 python-dotenv
 requests
